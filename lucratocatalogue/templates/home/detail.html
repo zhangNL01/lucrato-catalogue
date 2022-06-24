@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid position-relative" style="text-align:center">
+    <!--position fix elements-->
+    <!--mark as favorite-->
+    <button type="button" class="btn position-absolute start-0 top-0 ms-3 mb-3"
+            style="background-color:transparent; width: 5%; min-width:45px">
+        <svg width="100%" height="100%" fill=gray class="bi bi-heart-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+        </svg>
+    </button>
+    <!--back to items list-->
+    <a href="{% url 'items' %}" style="text-decoration:none;">
+        <button type="button" class="btn btn-lg position-absolute top-0 end-0 me-3 mb-3"
+                style="z-index:100; border-radius: 20px; background-color:#604ce2; width: 20%; font-weight: bold; font-size: 2vw; color:white">
+            Terug
+        </button>
+    </a>
+    <!--qr code-->
+    <div class="position-fixed bottom-0 end-0 me-3 mb-3"
+         style="width: 30%; font-weight: bold; font-size: 3vw; color:black; float: right;">
+        Meer weten?
+        <img src="{% get_media_prefix %}{{ item_detail.qr_code }}"
+             style="width: 10vw;" alt="qr code">
+    </div>
+    <!--item detail elements-->
+    <div class="container-fluid position-relative" style="top: 5vw">
+        <div class="row mx-auto" style="width: 80%">
+            <!--video-->
+            <div class="col-4 position-absolute start-0 " style="top: 3vh">
+                <iframe src="{{ item_detail.video_address }}"
+                        style="width: 30vw; height: 40vh; object-fit:cover;"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <!--description-->
+            <div class="col-8 position-absolute end-0" style="top: -11vh">
+                <!--title-->
+                <div class="row">
+                    <h2 class="text-start fw-bold lh-lg">
+                        {{ item_detail.title }}
+                    </h2>
+                </div>
+                <!--detail description-->
+                <div class="row" style="overflow-y:scroll; height: 20vh">
+                    <div class="text-start">
+                        {{ item_detail.description }}
+                        {% if seller_mode is True%}
+                        </br></br>
+                        {{ item_detail.seller_info }}
+                        {% endif %}
+                    </div>
+                </div>
+                </br>
+                <!--detail pictures-->
+                <div class="row" style="">
+                    <img src="{% get_media_prefix %}{{ item_detail.detail_picture_1 }}"
+                         class="rounded float-start mx-auto"
+                         style="width: auto; max-height: 20vh; object-fit:cover;"/>
+                    <img src="{% get_media_prefix %}{{ item_detail.detail_picture_2 }}"
+                         class="rounded float-end mx-auto"
+                         style="width: auto; max-height: 20vh; object-fit:cover;"/>
+                </div>
+                </br>
+                <!--labels-->
+                <div class="row">
+                    <div class="text-start">
+                        <b>Labels: </b>
+                        {% for l in item_detail.labels.all %}
+                        {{ l }},
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

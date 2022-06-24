@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid" style="">
+    <div class="row position-relative" style="height:100%">
+        <!--filter-->
+        <div class="col-3 position-absolute start-0 ms-3 bg-secondary bg-opacity-10 ">
+            <form action="{% url 'selected_items' %}" method="get">
+                <input id="current_lit" type="hidden" name="last_labels" value="{{ last_labels }}">
+                <div class="row" style="overflow-y: scroll; height: 60vh">
+                    <h3>
+                        <svg width="2vw" height="2vw" fill="currentColor"
+                             class="bi bi-funnel" viewBox="0 0 16 16">
+                            <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
+                        </svg>
+                        Filter
+                    </h3>
+                    <div>
+                        <input type="checkbox" class="btn-check" id="filter_armen" name="filter" value="20"
+                               style=""/>
+                        <label class="btn" for="filter_armen" style="--bs-btn-font-weight: bold; width: 99%;
+                        --bs-btn-border-color: #604ce2; --bs-btn-active-color: #604ce2;--bs-btn-active-bg: #c5bdf4;">Armen</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" class="btn-check" id="filter_benen" name="filter" value="21"
+                               style=""/>
+                        <label class="btn" for="filter_benen" style="--bs-btn-font-weight: bold; width: 99%;
+                        --bs-btn-border-color: #604ce2; --bs-btn-active-color: #604ce2;--bs-btn-active-bg: #c5bdf4;">Benen</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" class="btn-check" id="filter_rug" name="filter" value="22" style=""/>
+                        <label class="btn" for="filter_rug" style="--bs-btn-font-weight: bold; width: 99%;
+                        --bs-btn-border-color: #604ce2; --bs-btn-active-color: #604ce2;--bs-btn-active-bg: #c5bdf4;">Rug</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" class="btn-check" id="filter_handen" name="filter" value="23"
+                               style=""/>
+                        <label class="btn" for="filter_handen" style="--bs-btn-font-weight: bold; width: 99%;
+                        --bs-btn-border-color: #604ce2; --bs-btn-active-color: #604ce2;--bs-btn-active-bg: #c5bdf4;">Handen</label>
+                    </div>
+                    <div>
+                        <input type="submit" style="--bs-btn-font-weight: bold;  width: 99%;" value="Zoek">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--item list-->
+        <div class="col-4 position-absolute translate-centre"
+             style="overflow-y:scroll; left: 30%; width: 45vw; height: 78vh;">
+            <!--Using a bootstrap card shows one item-->
+            {% for i in item_list %}
+            <a href="details/{{ i.pk }}" style="text-decoration:none; color: black;">
+                <div class="card mb-3" style="max-width: 100%; overflow: hide; text-overflow: ellipsis; height: 30vh">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{% get_media_prefix %}{{ i.cover_picture }}"
+                                 alt="img" style="width: 14vw; height: 30vh; object-fit:cover;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body" style="">
+                                <h5 class="card-title">{{ i.title }}</h5>
+                                <p class="card-text text-truncate" style="height: 15vh;">
+                                    {{ i.description }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        <!--back button to index-->
+        <div class="col position-absolute">
+            <a href="{% url 'index' %}" style="text-decoration:none;">
+                <button type="button" class="btn btn-lg position-absolute top-0 end-0 me-3 mb-3"
+                        style="border-radius: 20px; background-color:#604ce2; width: 20%; font-weight: bold; font-size: 2vw; color:white">
+                    Terug
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

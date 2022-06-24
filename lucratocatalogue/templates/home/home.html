@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+</br>
+<div class="container" style="text-align:center">
+    <a href="{% url 'login' %}" style="font-weight: bold; font-size: 2vw; color: black; text-decoration:none;">
+        <div class="row ">
+            <div class="col">
+                <img src="{% static 'home/images/login_coach.jpg' %}"
+                     style="width: 50%; border: 6px solid #604ce2; border-radius: 25px;"/>
+                <div class="row"><p>Client met coach</p></div>
+            </div>
+            <div class="col">
+                <img id="login_image" src="{% static 'home/images/login_company.jpg' %}"
+                     style="width: 50%; border: 6px solid #604ce2; border-radius: 25px;"/>
+                <div class="row"><p>Organisaties</p>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+{% endblock content %}

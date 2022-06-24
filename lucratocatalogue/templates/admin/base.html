@@ -1,0 +1,15 @@
+{% extends 'admin/base.html' %}
+
+{% block extrastyle %}{{ block.super }}
+<style>
+:root {
+  --primary: #604ce2;
+  --secondary: #604ce2;
+  --link-fg: black;
+  --link-selected-fg: black;
+}
+</style>
+<!--company logo-->
+<img style="position:fixed; bottom: 3%; left: 3%; width: 15%"
+     src="https://tint-apeldoorn.nl/app/uploads/2021/05/logo-tint-kleur.png" alt="logo" style="width: 20%;"/>
+{% endblock %}

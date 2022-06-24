@@ -1,0 +1,313 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid position-relative">
+    <div class="row">
+        <!--buttons-->
+        <!--favorite list-->
+        <button type="button" class="btn btn-lg position-absolute start-0 top-0 ms-3 mb-3"
+                style="border-radius: 20px; background-color:#604ce2; width: 20%; font-weight: bold; font-size: 2vw; color:white">
+            Favorieten
+        </button>
+        <!--back to log off-->
+        <a href="{% url 'logout' %}" style="text-decoration:none;">
+            <button type="button" class="btn btn-lg position-absolute top-0 end-0 me-3 mb-3"
+                    style="border-radius: 20px; background-color:#604ce2; width: 20%; font-weight: bold; font-size: 2vw; color:white">
+                Terug
+            </button>
+        </a>
+
+        <!--centre area-->
+        <div class="container position-relative mx-auto" style="width: 300px; height: 300px;">
+            <form action="{% url 'items' %}" method="get">
+                <!--texts on circles-->
+                <div class="position-absolute"
+                     style="z-index:99; background:transparent; text-align: center; width: 200px; height: 200px;  transform: rotate(-8deg); top: 20%;">
+                    <svg viewBox="0 0 100 100" style="display: block; overflow: visible;">
+                        <path d="M 22 80, a50 50, 0 1 1, 0 1, z" id="text-path1" style="fill: none;"></path>
+                        <text font-size="smaller">
+                            <textPath xlink:href="#text-path1">
+                                Psychisch
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+                <div class="position-absolute"
+                     style="z-index:99; background:transparent; text-align: center; width: 200px; height: 200px; transform: rotate(-130deg); top: 20%;">
+                    <svg viewBox="0 0 100 100" style="display: block; overflow: visible;">
+                        <path d="M -35 50, a50 50, 0 1 1, 0 1, z" id="text-path2" style="fill: none;"></path>
+                        <text font-size="smaller">
+                            <textPath xlink:href="#text-path2">
+                                Lichamelijk
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+                <div class="position-absolute"
+                     style="z-index:99; background:transparent; text-align: center; width: 200px; height: 200px; transform: rotate(-255deg); top: 20%;">
+                    <svg viewBox="0 0  100 100" style="display: block; overflow: visible;">
+                        <path d="M 20 20 a50 50, 0 1 1, 0 1, z" id="text-path3" style="fill: none;"></path>
+                        <text font-size="smaller">
+                            <textPath xlink:href="#text-path3">
+                                Verstandelijke
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+                <div class="position-absolute translate-middle text-center"
+                     style="z-index:99;  font-weight: bold; font-size: 1vw; top: 70%; left: 54%">
+                    Belemmeringen
+                </div>
+                <!--circular sectors-->
+                <div class="position-absolute"
+                     style="width: 100%; height: 100%; transform: rotate(-0deg); top: 20%;
+                         clip: rect(0px,150px,300px,0px); border-radius: 50%; background-color: #A8D8EA; border-style:solid; border-color:black;"
+                >
+                </div>
+                <div class="position-absolute"
+                     style="width: 100%; height: 100%; transform: rotate(-120deg); top: 20%;
+                     clip: rect(0px,150px,300px,0px); border-radius: 50%; background-color: #FCBAD3; border-style:solid; border-color:black;"
+                >
+
+                </div>
+                <div class="position-absolute"
+                     style="width: 100%; height: 100%; transform: rotate(-240deg); top: 20%;
+                     clip: rect(0px,150px,300px,0px); border-radius: 50%; background-color: #FFFFD2; border-style:solid; border-color:black;"
+                >
+                </div>
+                <div class="position-absolute"
+                     style="width: 100%; height: 100%; transform: rotate(-0deg); top: 20%;
+                     clip: rect(0px,150px,150px,0px); border-radius: 50%; background-color: #A8D8EA; border-style:solid; border-color:black;"
+                >
+                </div>
+                <!--centre circle-->
+                <div class="position-absolute translate-middle text-center"
+                     style="width: 50%; height: 50%; border-radius: 50%; background-color: white; border-style:solid; border-color:black;  top: 70%; left: 54%"
+                >
+                </div>
+                <!--choices list, free icon resource: https://www.flaticon.com/ -->
+                <!--choices list: Psychisch-->
+                <!--checkbox Motivatie-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_motivatie" name="label" value="1"
+                           style="display: none"/>
+                    <label class="btn" for="label_motivatie"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: 1%; left: 0%; --bs-btn-active-color: #604ce2;">Motivatie</label>
+                    <!--icon-->
+                    <img src="https://cdn-icons-png.flaticon.com/512/2058/2058768.png" alt="Motivatie"
+                         style="z-index:100; width: 14%; position:absolute; top: 2%; left: 32%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #A8D8EA; border-radius: 50%; position:absolute; top: 0%; left: 30%"/>
+                </div>
+                <!--checkbox Emotie-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_emotie" name="label" value="2"
+                           style="display: none;"/>
+                    <label class="btn" for="label_emotie"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: 18%; left: -43%; --bs-btn-active-color: #604ce2;">Emotie-regulatie</label>
+                    <!--icon-->
+                    <img src="https://cdn-icons.flaticon.com/png/512/1231/premium/1231448.png?token=exp=1655710755~hmac=94483df2d3288697957a12e9d9e653c3"
+                         alt="emotie"
+                         style="z-index:100; width: 14%; position:absolute; top: 17%; left: 5%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #A8D8EA; border-radius: 50%; position:absolute; top: 15%; left: 3%"/>
+                </div>
+                <!--checkbox Sociale-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_sociale" name="label" value="3"
+                           style="display: none;"/>
+                    <label class="btn" for="label_sociale"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: 45%; left: -71%; --bs-btn-active-color: #604ce2;">Sociale
+                        vaardigheden</label>
+                    <!--icon-->
+                    <img src="https://cdn-icons-png.flaticon.com/512/3820/3820107.png" alt="sociale"
+                         style="z-index:100; width: 12%; position:absolute; top: 45%; left: -12%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #A8D8EA; border-radius: 50%; position:absolute; top: 42%; left: -15%"/>
+                </div>
+                <!--checkbox Zelfinzich-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_zelf" name="label" value="4"
+                           style="display: none;"/>
+                    <label class="btn" for="label_zelf"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: 75%; left: -64%; width: 48%; --bs-btn-active-color: #604ce2;">Zelfinzicht,
+                        angst, vertrouwen</label>
+                    <!--icon-->
+                    <img src="https://cdn-icons-png.flaticon.com/512/2210/2210709.png" alt="zelf"
+                         style="z-index:100; width: 12%; position:absolute; top: 78%; left: -12%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #A8D8EA; border-radius: 50%; position:absolute; top: 75%; left: -15%"/>
+                </div>
+                <!--choices list: Lichamelijk-->
+                <!--checkbox Kracht-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_kracht" name="label" value="5"
+                           style="display: none;"/>
+                    <label class="btn" for="label_kracht"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: 103%; left: -42%; --bs-btn-active-color: #604ce2;">Kracht
+                        zetten</label>
+                    <!--icon-->
+                    <img src="https://cdn-icons-png.flaticon.com/512/639/639284.png" alt="kracht"
+                         style="z-index:100; width: 15%; position:absolute; top: 101%; left: -2%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #FCBAD3; border-radius: 50%; position:absolute; top: 100%; left: -3%"/>
+                </div>
+                <!--checkbox Houding-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_houding" name="label" value="6"
+                           style="display: none;"/>
+                    <label class="btn" for="label_houding"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: 123%; left: -17%; --bs-btn-active-color: #604ce2;">Houding</label>
+                    <!--icon-->
+                    <img src="https://cdn-icons-png.flaticon.com/512/76/76814.png" alt="houding"
+                         style="z-index:100; width: 15%; position:absolute; top: 117%; left: 14%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #FCBAD3; border-radius: 50%; position:absolute; top: 115%; left: 12%"/>
+                </div>
+                <!--checkbox Coördinatie-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_coord" name="label" value="7"
+                           style="display: none;"/>
+                    <label class="btn" for="label_coord"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: 141%; left: 17%; --bs-btn-active-color: #604ce2;">Coördinatie</label>
+                    <!--icon-->
+                    <img src="{% static 'home/images/coordinate.png' %}"
+                         alt="coord"
+                         style="z-index:100; width: 17%; position:absolute; top: 123%; left: 33%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #FCBAD3; border-radius: 50%; position:absolute; top: 122%; left: 32%"/>
+                </div>
+                <!--checkbox Beweging-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_beweging" name="label" value="8"
+                           style="display: none;"/>
+                    <label class="btn" for="label_beweging"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: 141%; left: 55%; --bs-btn-active-color: #604ce2;">Beweging</label>
+                    <!--icon-->
+                    <img src="{% static 'home/images/beweging.png' %}"
+                         alt="beweging"
+                         style="z-index:100; width: 17%; position:absolute; top: 122%; left: 56%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #FCBAD3; border-radius: 50%; position:absolute; top: 122%; left: 55%"/>
+                </div>
+                <!--checkbox Precisie-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_prec" name="label" value="9"
+                           style="display: none;"/>
+                    <label class="btn" for="label_prec"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: 125%; left: 95%; --bs-btn-active-color: #604ce2;">Precisie</label>
+                    <!--icon-->
+                    <img src="{% static 'home/images/precisie.png' %}"
+                         alt="prec"
+                         style="z-index:100; width: 14%; position:absolute; top: 117%; left: 77%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #FCBAD3; border-radius: 50%; position:absolute; top: 115%; left: 75%"/>
+                </div>
+                <!--checkbox Waarnemen-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_waarn" name="label" value="10"
+                           style="display: none;"/>
+                    <label class="btn" for="label_waarn"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: 105%; left: 115%; --bs-btn-active-color: #604ce2;">Waarnemen</label>
+                    <!--icon-->
+                    <img src="https://cdn4.iconfinder.com/data/icons/eon-ecommerce-i-1/32/search_internet_web_-256.png"
+                         alt="waarn"
+                         style="z-index:100; width: 15%; position:absolute; top: 101%; left: 94%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #FCBAD3; border-radius: 50%; position:absolute; top: 100%; left: 92%"/>
+                </div>
+                <!--choices list: Verstandelijk-->
+                <!--checkbox Cognitieve-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_cogn" name="label" value="11"
+                           style="display: none;"/>
+                    <label class="btn" for="label_cogn"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: 84%; left: 124%; width: 60%; --bs-btn-active-color: #604ce2;">Cognitieve
+                        snelheid, schakelen, concentratie</label>
+                    <!--icon-->
+                    <img src="https://cdn4.iconfinder.com/data/icons/smart-business-volume-3-1/50/mind_process_cognitive_creative_head_human_process_thinking-256.png"
+                         alt="cogn"
+                         style="z-index:100; width: 15%; position:absolute; top: 84%; left: 107%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #FFFFD2; border-radius: 50%; position:absolute; top: 83%; left: 105%"/>
+                </div>
+                <!--checkbox Taal-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_taal" name="label" value="12"
+                           style="display: none;"/>
+                    <label class="btn" for="label_taal"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: 64%; left: 132%; --bs-btn-active-color: #604ce2;">Taal</label>
+                    <!--icon-->
+                    <img src="https://cdn4.iconfinder.com/data/icons/logos-4/24/Translate-256.png"
+                         alt="taal"
+                         style="z-index:100; width: 13%; position:absolute; top: 64%; left: 112%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #FFFFD2; border-radius: 50%; position:absolute; top: 62%; left: 110%"/>
+                </div>
+                <!--checkbox Ideeproductie-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_idee" name="label" value="13"
+                           style="display: none;"/>
+                    <label class="btn" for="label_idee"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: 40%; left: 130%; --bs-btn-active-color: #604ce2;">Ideeproductie,
+                        beslissen</label>
+                    <!--icon-->
+                    <img src="{% static 'home/images/ideeproductie.png' %}"
+                         alt="idee"
+                         style="z-index:100; width: 15%; position:absolute; top: 42%; left: 109%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #FFFFD2; border-radius: 50%; position:absolute; top: 41%; left: 108%"/>
+                </div>
+                <!--checkbox Redeneren-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_rede" name="label" value="14"
+                           style="display: none;"/>
+                    <label class="btn" for="label_rede"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: 23%; left: 115%; --bs-btn-active-color: #604ce2;">Redeneren</label>
+                    <!--icon logic-->
+                    <img src="{% static 'home/images/redeneren.png' %}"
+                         alt="rede"
+                         style="z-index:100; width: 15%; position:absolute; top: 22%; left: 97%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #FFFFD2; border-radius: 50%; position:absolute; top: 21%; left: 95%"/>
+                </div>
+                <!--checkbox Algemene-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_alge" name="label" value="15"
+                           style="display: none;"/>
+                    <label class="btn" for="label_alge"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: 8%; left: 98%; width: 63%; --bs-btn-active-color: #604ce2;">Algemene
+                        vaardigheden</label>
+                    <!--icon-->
+                    <img src="{% static 'home/images/algemene.png' %}"
+                         alt="alge"
+                         style="z-index:100; width: 15%; position:absolute; top: 9%; left: 78%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #FFFFD2; border-radius: 50%; position:absolute; top: 8%; left: 77%"/>
+                </div>
+                <!--checkbox Geheugen-->
+                <div>
+                    <input type="checkbox" class="btn-check" id="label_gehe" name="label" value="16"
+                           style="display: none;"/>
+                    <label class="btn" for="label_gehe"
+                           style="font-weight: bold; font-size: 1vw; position:absolute; top: -6%; left: 73%; width: 77%; --bs-btn-active-color: #604ce2;">Geheugen
+                        en leren, herinneren</label>
+                    <!--icon-->
+                    <img src="{% static 'home/images/geheugen.png' %}"
+                         alt="gehe"
+                         style="z-index:100; width: 15%; position:absolute; top: 1%; left: 56%"/>
+                    <!--background circle-->
+                    <div style="z-index:99; width: 18%; padding-bottom: 18%; background-color: #FFFFD2; border-radius: 50%; position:absolute; top: 0%; left: 55%"/>
+                </div>
+                <!--show items list-->
+<!--                <a href="{% url 'items' %}" style="text-decoration:none;">-->
+                    <button type="submit" class="btn btn-lg position-fixed bottom-0 end-0 me-3 mb-3"
+                            style="border-radius: 20px; background-color:#604ce2; width: 20%; font-weight: bold; font-size: 2vw; color:white">
+                        Zoek
+                    </button>
+<!--                </a>-->
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
